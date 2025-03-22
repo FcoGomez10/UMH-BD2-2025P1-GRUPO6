@@ -27,4 +27,20 @@ fechaNacimiento, nacionalidad, telefono, fax, email, id_domicilio)
 		'carlos@email.com', 
 		2);
         
-        select * from proyecto2.cliente;
+select * from proyecto2.cliente;
+
+#Inserciones de prueba hotel
+Insert into hotel (nombre)
+	values ("Plaza San Francisco"), ("Caesar Business Santiago"), ("Sheraton Santiago"), ("San Cristobal Tower");
+    
+insert into tipoHabitacion (tipoHabitacion)
+	values("Standard"), ("Classic"), ("Grand Deluxe");
+   
+insert into acomodacion (tipo)
+	values ("single"), ("doble"), ("twin");
+    
+Insert into habitacion (id_hotel, id_tipoHabitacion, id_acomodacion, precio)
+values (1, 1, 1, 125.00);
+
+select * from habitacion;
+
