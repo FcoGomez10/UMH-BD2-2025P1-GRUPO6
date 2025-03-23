@@ -84,3 +84,44 @@ BEGIN
         SELECT 'No se puede realizar el proceso' AS Resultado;
     END IF;
 END;
+
+
+#procedimiento para actualizar habitacion
+
+delimiter //
+drop procedure sp_habitacion_upd;
+
+DELIMITER //
+CREATE PROCEDURE proyecto2.sp_habitacion_upd (
+    IN p_id_habitacion INT,
+    IN p_precio decimal (10, 2),
+    IN p_id_hotel INT,
+    IN p_id_tipoHabitacion int,
+    IN p_id_acomodacion int
+)
+BEGIN
+    DECLARE v_idExiste INT;
+    
+    # Verifica si la tarjeta existe
+    SELECT COUNT(*) INTO v_idExiste
+    FROM habitacion
+    WHERE id_habitacion = p_id_habitacion;
+    
+    # Condición para realizar el update de la tabla habitacion
+    IF v_idExiste > 0 THEN
+        UPDATE habitacion
+        SET precio = p_precio,
+            id_hotel = p_id_hotel,
+            id_tipoHabitacion = p_id_tipoHabitacion,
+            id_acomodacion = p_id_acomodacion
+        WHERE id_habitacion = p_id_habitacion;
+    ELSE
+        SELECT 'No se puede realizar el proceso' AS Resultado;
+    END IF;
+END;
+
+
+call sp_habitacion_upd(1, 190.00, 3, 2, 2);
+
+select * from habitacion;
+
