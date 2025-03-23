@@ -1,10 +1,10 @@
-#PROYECTO FORMULARIO DE HOTEL
+# PROYECTO FORMULARIO DE HOTEL
 
 -- -----------------------------------------------------
 -- Schema proyecto2
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `proyecto2` DEFAULT CHARACTER SET utf8 ;
-USE `proyecto2` ;
+CREATE SCHEMA IF NOT EXISTS `proyecto2` DEFAULT CHARACTER SET utf8;
+USE `proyecto2`;
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`pais`
@@ -12,8 +12,8 @@ USE `proyecto2` ;
 CREATE TABLE IF NOT EXISTS `proyecto2`.`pais` (
   `id_pais` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_pais`));
-
+  PRIMARY KEY (`id_pais`)
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`ciudad`
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`ciudad` (
     FOREIGN KEY (`id_pais`)
     REFERENCES `proyecto2`.`pais` (`id_pais`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
+    ON UPDATE NO ACTION
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`domicilio`
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`domicilio` (
     FOREIGN KEY (`id_ciudad`)
     REFERENCES `proyecto2`.`ciudad` (`id_ciudad`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
+    ON UPDATE NO ACTION
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`cliente`
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`cliente` (
     FOREIGN KEY (`id_domicilio`)
     REFERENCES `proyecto2`.`domicilio` (`id_domicilio`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
+    ON UPDATE NO ACTION
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`hotel`
@@ -78,8 +78,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`cliente` (
 CREATE TABLE IF NOT EXISTS `proyecto2`.`hotel` (
   `id_hotel` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_hotel`));
-
+  PRIMARY KEY (`id_hotel`)
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`tipoTarjeta`
@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`hotel` (
 CREATE TABLE IF NOT EXISTS `proyecto2`.`tipoTarjeta` (
   `id_tipoTarjeta` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_tipoTarjeta`));
-
+  PRIMARY KEY (`id_tipoTarjeta`)
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`tarjeta`
@@ -112,8 +112,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`tarjeta` (
     FOREIGN KEY (`id_tipoTarjeta`)
     REFERENCES `proyecto2`.`tipoTarjeta` (`id_tipoTarjeta`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
+    ON UPDATE NO ACTION
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`tipoHabitacion`
@@ -121,8 +121,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`tarjeta` (
 CREATE TABLE IF NOT EXISTS `proyecto2`.`tipoHabitacion` (
   `id_tipoHabitacion` INT NOT NULL AUTO_INCREMENT,
   `tipoHabitacion` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_tipoHabitacion`));
-
+  PRIMARY KEY (`id_tipoHabitacion`)
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`acomodacion`
@@ -130,8 +130,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`tipoHabitacion` (
 CREATE TABLE IF NOT EXISTS `proyecto2`.`acomodacion` (
   `id_acomodacion` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_acomodacion`));
-
+  PRIMARY KEY (`id_acomodacion`)
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`habitacion`
@@ -160,8 +160,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`habitacion` (
     FOREIGN KEY (`id_acomodacion`)
     REFERENCES `proyecto2`.`acomodacion` (`id_acomodacion`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
+    ON UPDATE NO ACTION
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`reserva`
@@ -195,8 +195,8 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`reserva` (
     FOREIGN KEY (`id_habitacion`)
     REFERENCES `proyecto2`.`habitacion` (`id_habitacion`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
+    ON UPDATE NO ACTION
+);
 
 -- -----------------------------------------------------
 -- Table `proyecto2`.`personaContacto`
@@ -214,4 +214,5 @@ CREATE TABLE IF NOT EXISTS `proyecto2`.`personaContacto` (
     FOREIGN KEY (`id_hotel`)
     REFERENCES `proyecto2`.`hotel` (`id_hotel`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION
+);
