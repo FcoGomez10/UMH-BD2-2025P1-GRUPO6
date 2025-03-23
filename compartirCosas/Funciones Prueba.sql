@@ -17,6 +17,19 @@ select fn_get_total (142, 3) as Total;
 
 ---------------------- Funcion Cantidad de Reservaciones -------------------
 
+DELIMITER //
+CREATE FUNCTION fn_get_reservaciones (p_id_cliente INT) RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE v_count INT;
+    
+    -- Contar las reservas del cliente
+    SELECT COUNT(*) INTO v_count FROM reserva WHERE id_cliente = p_id_cliente;
+    
+    RETURN v_count;
+END;
+
+SELECT fn_get_reservaciones (1) as Reservaciones;
 
 
 ---------------------- Funcion confirmacion de Reservaciones -------------------
