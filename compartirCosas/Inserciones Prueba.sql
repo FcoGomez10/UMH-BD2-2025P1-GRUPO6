@@ -45,7 +45,7 @@ select * from habitacion;
 
 --------------------------- Inserciones Tarjeta ---------------------------------------
 
-nsert into tipoTarjeta (tipo)
+insert into tipoTarjeta (tipo)
 	values ('AMEX'), ('VISA'), ('MasterCard'), ('Diners');
     
 insert into tarjeta (numTarjeta, fechaVencimiento, nombreTitular, id_cliente, id_tipoTarjeta)
