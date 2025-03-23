@@ -1,5 +1,4 @@
-Use proyecto2;
-
+-------------- Inserciones Cliente ------------------------
 insert into pais (nombre)
 	values ("Honduras"),
 		   ("Mexico"),
@@ -29,7 +28,7 @@ fechaNacimiento, nacionalidad, telefono, fax, email, id_domicilio)
         
 select * from proyecto2.cliente;
 
-#Inserciones de prueba hotel
+------------------------ Inserciones hotel ------------------------------------------
 Insert into hotel (nombre)
 	values ("Plaza San Francisco"), ("Caesar Business Santiago"), ("Sheraton Santiago"), ("San Cristobal Tower");
     
@@ -44,3 +43,12 @@ values (1, 1, 1, 125.00);
 
 select * from habitacion;
 
+--------------------------- Inserciones Tarjeta ---------------------------------------
+
+nsert into tipoTarjeta (tipo)
+	values ('AMEX'), ('VISA'), ('MasterCard'), ('Diners');
+    
+insert into tarjeta (numTarjeta, fechaVencimiento, nombreTitular, id_cliente, id_tipoTarjeta)
+	values ('9999-9999-9999-9999','2025/01/15', 'Carlos Gonzales', 1, 1);
+		
+	select * from proyecto2.tarjeta;
