@@ -1,4 +1,4 @@
-/* Procedmientos*/
+/* Procedmientos con error*/
 
 /*drop procedure proyecto2.sp_tarjeta_upd;*/
 
@@ -51,3 +51,36 @@ create procedure proyecto2.sp_tarjeta_upd (
     call proyecto2.sp_tarjeta_upd (1, 1, 1, '8888-8888-8888-8888', '2025/02/24', 'Carlos Gonzales');
     
     select * from tarjeta;
+
+--------           Procedimiento correcto        ------------------------------------
+    DELIMITER //
+
+CREATE PROCEDURE proyecto2.sp_tarjeta_upd (
+    IN p_id_tarjeta INT,
+    IN p_id_cliente INT,
+    IN p_tipoTarjeta INT,
+    IN p_numTarjeta VARCHAR(45),
+    IN p_fechaVencimiento DATE,
+    IN p_nombreTitular VARCHAR(45)
+)
+BEGIN
+    DECLARE v_idExiste INT;
+    
+    # Verifica si la tarjeta existe
+    SELECT COUNT(*) INTO v_idExiste
+    FROM tarjeta
+    WHERE id_tarjeta = p_id_tarjeta;
+    
+    # Condición para realizar el update de la tabla tarjeta
+    IF v_idExiste > 0 THEN
+        UPDATE tarjeta
+        SET numTarjeta = p_numTarjeta,
+            fechaVencimiento = p_fechaVencimiento,
+            nombreTitular = p_nombreTitular,
+            id_cliente = p_id_cliente,
+            id_tipoTarjeta = p_tipoTarjeta
+        WHERE id_tarjeta = p_id_tarjeta;
+    ELSE
+        SELECT 'No se puede realizar el proceso' AS Resultado;
+    END IF;
+END;
